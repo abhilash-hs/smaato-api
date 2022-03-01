@@ -27,6 +27,10 @@ import org.springframework.web.client.RestTemplate;
 public class SmaatoController {
 
 	private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+	 
+	/**
+	 * static hashmap to hold the data for one minute.
+	 */
 	static ConcurrentHashMap<Integer, String> concurrentHashMap = new ConcurrentHashMap<Integer, String>();
 
 	/**
@@ -68,7 +72,7 @@ public class SmaatoController {
 	/**
 	 * Cron job which execute on every one minute which reads the number of unique
 	 * entries from the data structure and write to log file once done, it
-	 * clears/re-inititalize the data structure
+	 * clears/re-initialize the data structure
 	 */
 	@Scheduled(cron = "0/60 * * * * ?")
 	private void timer() {
